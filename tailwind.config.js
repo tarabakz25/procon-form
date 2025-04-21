@@ -13,7 +13,7 @@ module.exports = {
         // デフォルトの sans-serif フォントを "ab-don" に設定
         // Adobe Fonts で指定された正確なフォント名を引用符で囲んでください
         // フォールバックとして一般的なサンセリフフォントを指定します
-        sans: ['"ab-don"', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['ab-don', 'Helvetica', 'Arial', 'sans-serif'],
         // 必要であれば Geist フォント用の変数も残しておきます
         geist: ['var(--font-geist-sans)'],
         geistmono: ['var(--font-geist-mono)'],
