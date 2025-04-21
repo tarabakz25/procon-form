@@ -37,7 +37,9 @@ export function AdobeFonts() {
                 clearTimeout(t);
                 try {
                     (window as Window).Typekit.load(config);
-                } catch (e) {}
+                } catch {
+                    console.error('Typekitの読み込みに失敗しました。');
+                }
             };
             tk.onerror = () => {
                 clearTimeout(t);
