@@ -1,26 +1,28 @@
 'use client'
 import { useState } from 'react'
+import { supabase } from '@/utils/supabase/client'
 
 export default function Home() {
   const [name, setName] = useState('')
   const [participation, setParticipation] = useState(false)
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [status, setStatus] = useState('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus("submitting")
-    const response = await fetch('/api/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, participation })
-    })
+    setStatus('submitting')
 
-    if(response.ok) {
-      setStatus("success")
+    const { error } = await supabase
+      .from('forms')
+      .insert({
+        name,
+        participation
+      })
+
+    if(error) {
+      console.error(error)
+      setStatus('error')
     } else {
-      setStatus("error")
+      setStatus('success')
     }
   }
 

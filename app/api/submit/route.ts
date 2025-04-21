@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from "next/server"
-import { PrismaClient } from "@/app/generated/prisma"
-
-const prisma = new PrismaClient()
+import { cookies } from 'next/headers'
 
 export async function POST(request: NextRequest) {
     const { name, participation } = await request.json()
 
-    const submission = await prisma.submission.create({
-        data: {
-            name,
-            participation
-        }
+    const supabase = await createClient()
+
+    const { data, error } = await supabase.from('submissions').insert({
+        name,
+        participation
     })
 
-    return NextResponse.json(submission)
+    if (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ data })
 }
