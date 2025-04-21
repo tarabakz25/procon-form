@@ -27,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <main className="p-6 h-screen w-screen mx-auto text-center flex flex-col justify-center items-center bg-white text-black">
+    <main className="p-6 h-screen w-screen mx-auto text-center flex flex-col justify-center items-center bg-white text-black font-['ab-don']">
       <h1 className="text-2xl mb-4">高専プロコン参加フォーム</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -38,7 +38,7 @@ export default function Home() {
           className="w-full border px-3 py-2 rounded"
           required
         />
-  
+
         <label className="flex items-center space-x-2">
           <input
             type="checkbox"
@@ -59,7 +59,7 @@ export default function Home() {
           </button>
         )}
       </form>
-  
+
       {status === "success" && (
         <p className="mt-4 text-green-600">送信が完了しました！</p>
       )}
