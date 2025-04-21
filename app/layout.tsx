@@ -12,11 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ABDon = Geist({
-  variable: "--font-AB-Don",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
   title: "Procon2025参加フォーム",
   description: "Procon2025参加フォーム",
@@ -29,8 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ABDon.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>
